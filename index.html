@@ -1,676 +1,251 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Urbaniste de Projet</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eleazar Floirat — Urbaniste de projet</title>
+  <meta name="description" content="Portfolio d'Eleazar Floirat, urbaniste de projet — diagnostic territorial, cartographie et conception spatiale.">
 
-    :root {
-      --ink:     #1A1A1A;
-      --paper:   #F7F4EE;
-      --stone:   #C8BFB0;
-      --accent:  #3B5E4A;
-      --accent2: #7A9E8E;
-      --mid:     #6B6459;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.2rem 3rem;
-      background: var(--paper);
-      border-bottom: 1px solid var(--stone);
-    }
-    .nav-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-      color: var(--ink);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--mid);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 5rem;
-    }
-    .hero-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 4rem 3rem 4rem 4rem;
-    }
-    .hero-eyebrow {
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero-desc {
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: var(--mid);
-      max-width: 42ch;
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-    }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.85rem 1.8rem;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 3px;
-      transition: background 0.2s;
-      width: fit-content;
-    }
-    .hero-cta:hover { background: #2d4a39; }
-    .hero-visual {
-      background: var(--accent);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      padding: 3rem;
-    }
-    .hero-visual-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    .hero-visual-label {
-      position: relative;
-      z-index: 2;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .hero-stat {
-      position: absolute;
-      top: 3rem; right: 3rem;
-      z-index: 2;
-      text-align: right;
-    }
-    .hero-stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 5rem;
-      color: rgba(255,255,255,0.15);
-      line-height: 1;
-    }
-    .hero-stat-label {
-      color: rgba(255,255,255,0.35);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-    }
-
-    /* ── SECTIONS ── */
-    section { padding: 6rem 4rem; }
-    .section-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .section-sub {
-      font-size: 1rem;
-      color: var(--mid);
-      font-weight: 300;
-      max-width: 55ch;
-      line-height: 1.7;
-      margin-bottom: 3rem;
-    }
-
-    /* ── PROJETS ── */
-    .projects { background: #fff; }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    .project-card {
-      border: 1px solid var(--stone);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      background: var(--paper);
-    }
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-    }
-    .project-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      background: var(--accent2);
-    }
-    .project-img-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-    }
-    .project-body { padding: 1.4rem; }
-    .project-tag {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .project-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      line-height: 1.3;
-    }
-    .project-desc {
-      font-size: 0.88rem;
-      color: var(--mid);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-    .project-tools {
-      margin-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-    .tool-tag {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.6rem;
-      background: rgba(59,94,74,0.1);
-      color: var(--accent);
-      border-radius: 2px;
-      font-weight: 500;
-    }
-
-    /* ── COMPÉTENCES ── */
-    .skills { background: var(--ink); color: #fff; }
-    .skills .section-title { color: #fff; }
-    .skills .section-sub { color: rgba(255,255,255,0.5); }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .skill-item {
-      padding: 1.4rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 4px;
-    }
-    .skill-name {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-    .skill-level {
-      height: 2px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 1px;
-      overflow: hidden;
-    }
-    .skill-fill {
-      height: 100%;
-      background: var(--accent2);
-      border-radius: 1px;
-    }
-    .skill-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.35);
-      margin-top: 0.4rem;
-    }
-
-    /* ── À PROPOS ── */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .about-text .section-title { margin-bottom: 1.2rem; }
-    .about-body {
-      font-size: 0.95rem;
-      color: var(--mid);
-      line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: 1.5rem;
-    }
-    .about-infos {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-    .about-info-row {
-      display: flex;
-      gap: 1rem;
-      font-size: 0.88rem;
-    }
-    .about-info-label {
-      color: var(--accent);
-      font-weight: 500;
-      min-width: 80px;
-    }
-    .about-info-val { color: var(--mid); }
-    .about-visual {
-      background: var(--accent);
-      border-radius: 4px;
-      aspect-ratio: 3/4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .about-visual-inner {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 30px 30px;
-    }
-    .about-visual-text {
-      position: relative;
-      z-index: 2;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.3);
-      font-style: italic;
-      text-align: center;
-      padding: 2rem;
-      line-height: 1.8;
-    }
-
-    /* ── CONTACT ── */
-    .contact {
-      background: var(--accent);
-      color: #fff;
-      text-align: center;
-    }
-    .contact .section-title { color: #fff; }
-    .contact-sub {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.6);
-      font-weight: 300;
-      max-width: 50ch;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-    }
-    .contact-email {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      color: #fff;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 0.2rem;
-      transition: border-color 0.2s;
-    }
-    .contact-email:hover { border-color: #fff; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--ink);
-      color: rgba(255,255,255,0.3);
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .hero-text { padding: 6rem 1.5rem 3rem; }
-      section { padding: 4rem 1.5rem; }
-      .about { grid-template-columns: 1fr; }
-      .about-visual { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-name">Prénom Nom</a>
-    <ul class="nav-links">
-      <li><a href="#projets">Projets</a></li>
-      <li><a href="#competences">Compétences</a></li>
-      <li><a href="#apropos">À propos</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <a href="#main" class="skip-link">Aller au contenu</a>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-text">
-      <p class="hero-eyebrow">Urbaniste de projet · Paris</p>
-      <h1 class="hero-title">
-        Analyser,<br>
-        concevoir,<br>
-        <em>transformer.</em>
-      </h1>
-      <p class="hero-desc">
-        Étudiant en géographie et aménagement à Paris 1 Sorbonne.
-        Je conçois des diagnostics territoriaux, des visualisations
-        cartographiques et des scénarios d'aménagement urbain.
-      </p>
-      <a href="#projets" class="hero-cta">Voir les projets</a>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-visual-grid"></div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">01</div>
-        <div class="hero-stat-label">Portfolio en construction</div>
-      </div>
-      <span class="hero-visual-label">Espace · Territoire · Projet</span>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#accueil" class="logo">Eleazar Floirat</a>
+
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="#accueil" class="nav-link">Accueil</a></li>
+          <li><a href="#apropos" class="nav-link">À propos</a></li>
+          <li><a href="#competences" class="nav-link">Compétences</a></li>
+          <li><a href="#projets" class="nav-link">Projets</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- PROJETS -->
-  <section class="projects" id="projets">
-    <p class="section-eyebrow">Travaux</p>
-    <h2 class="section-title">Projets & analyses</h2>
-    <p class="section-sub">
-      Chaque projet part d'une observation du territoire, d'une question
-      concrète, et aboutit à une lecture cartographique ou une proposition spatiale.
-    </p>
+  <main id="main">
 
-    <div class="projects-grid">
-
-      <!-- Projet 1 -->
-      <article class="project-card">
-        <div class="project-img-placeholder">
-          <!-- Remplace par : <img src="images/troyes.png" alt="Carte Troyes" class="project-img"> -->
-          Carte de Troyes
+    <!-- ACCUEIL -->
+    <section id="accueil" class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow reveal">Portfolio</p>
+        <h1 class="hero-title reveal">Eleazar Floirat</h1>
+        <p class="hero-role reveal">Urbaniste de projet</p>
+        <p class="hero-text reveal">[À COMPLÉTER — courte phrase de présentation : formation, spécialité, ce que tu recherches]</p>
+        <div class="hero-actions reveal">
+          <a href="#projets" class="btn btn-primary">Voir les projets</a>
+          <a href="#contact" class="btn btn-outline">Me contacter</a>
         </div>
-        <div class="project-body">
-          <p class="project-tag">Cartographie · QGIS</p>
-          <h3 class="project-title">Morphologie urbaine de Troyes</h3>
-          <p class="project-desc">
-            Représentation figure-fond du tissu urbain du centre historique de Troyes.
-            Premier rendu QGIS explorant la lisibilité de la morphologie urbaine
-            médiévale par la cartographie graphique.
+      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="apropos" class="section">
+      <div class="container">
+        <p class="eyebrow reveal">Qui suis-je</p>
+        <h2 class="section-title reveal">À propos</h2>
+
+        <div class="about-grid">
+          <p class="about-text reveal">
+            [À COMPLÉTER — présentation détaillée : parcours, formation, approche du métier d'urbaniste de projet, ce qui t'intéresse dans l'aménagement du territoire]
           </p>
-          <div class="project-tools">
-            <span class="tool-tag">QGIS</span>
-            <span class="tool-tag">OpenStreetMap</span>
+
+          <ul class="about-facts reveal">
+            <li>
+              <span class="fact-label">Formation</span>
+              <span class="fact-value">[À COMPLÉTER]</span>
+            </li>
+            <li>
+              <span class="fact-label">Localisation</span>
+              <span class="fact-value">[À COMPLÉTER]</span>
+            </li>
+            <li>
+              <span class="fact-label">Objectif</span>
+              <span class="fact-value">[À COMPLÉTER]</span>
+            </li>
+            <li>
+              <span class="fact-label">Intérêts</span>
+              <span class="fact-value">[À COMPLÉTER]</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section id="competences" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow reveal">Savoir-faire</p>
+        <h2 class="section-title reveal">Compétences</h2>
+        <p class="section-sub reveal">[À COMPLÉTER — courte phrase d'introduction sur ton profil de compétences]</p>
+
+        <div class="skills-grid reveal">
+          <div class="skill-card"><h3>[À COMPLÉTER]</h3><p>[À COMPLÉTER]</p></div>
+          <div class="skill-card"><h3>[À COMPLÉTER]</h3><p>[À COMPLÉTER]</p></div>
+          <div class="skill-card"><h3>[À COMPLÉTER]</h3><p>[À COMPLÉTER]</p></div>
+          <div class="skill-card"><h3>[À COMPLÉTER]</h3><p>[À COMPLÉTER]</p></div>
+          <div class="skill-card"><h3>[À COMPLÉTER]</h3><p>[À COMPLÉTER]</p></div>
+          <div class="skill-card"><h3>[À COMPLÉTER]</h3><p>[À COMPLÉTER]</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets" class="section">
+      <div class="container">
+        <p class="eyebrow reveal">Travaux</p>
+        <h2 class="section-title reveal">Projets</h2>
+        <p class="section-sub reveal">[À COMPLÉTER — courte phrase d'introduction sur tes projets]</p>
+
+        <div class="projects-grid reveal">
+
+          <article class="project-card">
+            <div class="project-thumb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="0"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-tag">[À COMPLÉTER]</p>
+              <h3 class="project-title">[À COMPLÉTER]</h3>
+              <p class="project-desc">[À COMPLÉTER — description du projet]</p>
+              <div class="project-tools">
+                <span class="tool-tag">[À COMPLÉTER]</span>
+                <span class="tool-tag">[À COMPLÉTER]</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="0"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-tag">[À COMPLÉTER]</p>
+              <h3 class="project-title">[À COMPLÉTER]</h3>
+              <p class="project-desc">[À COMPLÉTER — description du projet]</p>
+              <div class="project-tools">
+                <span class="tool-tag">[À COMPLÉTER]</span>
+                <span class="tool-tag">[À COMPLÉTER]</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="0"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-tag">[À COMPLÉTER]</p>
+              <h3 class="project-title">[À COMPLÉTER]</h3>
+              <p class="project-desc">[À COMPLÉTER — description du projet]</p>
+              <div class="project-tools">
+                <span class="tool-tag">[À COMPLÉTER]</span>
+                <span class="tool-tag">[À COMPLÉTER]</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt contact-section">
+      <div class="container">
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="section-title reveal">Travaillons ensemble</h2>
+        <p class="section-sub reveal">[À COMPLÉTER — phrase d'accroche : disponibilités, type de collaborations recherchées]</p>
+
+        <div class="contact-links reveal">
+          <a href="mailto:eleazar.floirat@gmail.com" class="contact-link">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="0"/><path d="m2 6 10 7L22 6"/></svg>
+            </span>
+            <span class="contact-label">
+              <span class="contact-name">E-mail</span>
+              <span class="contact-value">eleazar.floirat@gmail.com</span>
+            </span>
+          </a>
+
+          <a href="#" class="contact-link is-tbd" aria-label="GitHub — lien à compléter">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+            </span>
+            <span class="contact-label">
+              <span class="contact-name">GitHub</span>
+              <span class="contact-value tbd">[À COMPLÉTER]</span>
+            </span>
+          </a>
+
+          <a href="#" class="contact-link is-tbd" aria-label="LinkedIn — lien à compléter">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12" rx="0"/><circle cx="4" cy="4" r="2"/></svg>
+            </span>
+            <span class="contact-label">
+              <span class="contact-name">LinkedIn</span>
+              <span class="contact-value tbd">[À COMPLÉTER]</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENTIONS LÉGALES -->
+    <section id="mentions" class="section mentions">
+      <div class="container">
+        <p class="eyebrow reveal">Informations légales</p>
+        <h2 class="section-title reveal">Mentions légales</h2>
+
+        <div class="legal-grid reveal">
+          <div class="legal-block">
+            <h3>Éditeur du site</h3>
+            <p>[À COMPLÉTER — nom, statut, adresse]</p>
+          </div>
+          <div class="legal-block">
+            <h3>Responsable de publication</h3>
+            <p>Eleazar Floirat</p>
+          </div>
+          <div class="legal-block">
+            <h3>Hébergement</h3>
+            <p>GitHub Pages — GitHub Inc.<br>88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</p>
+          </div>
+          <div class="legal-block">
+            <h3>Propriété intellectuelle</h3>
+            <p>[À COMPLÉTER — mentions sur les droits d'auteur des contenus, textes et images du site]</p>
+          </div>
+          <div class="legal-block">
+            <h3>Données personnelles &amp; cookies</h3>
+            <p>Ce site est statique : il ne dépose aucun cookie et ne réalise aucun suivi (tracking) de ses visiteurs. Aucune donnée personnelle n'est collectée.</p>
+          </div>
+          <div class="legal-block">
+            <h3>Contact</h3>
+            <p><a href="mailto:eleazar.floirat@gmail.com">eleazar.floirat@gmail.com</a></p>
           </div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <!-- Projet 2 -->
-      <article class="project-card">
-        <div class="project-img-placeholder">
-          <!-- Remplace par : <img src="images/densite.png" alt="Densité France" class="project-img"> -->
-          Densité 3D France
-        </div>
-        <div class="project-body">
-          <p class="project-tag">Dataviz · QGIS × Blender</p>
-          <h3 class="project-title">Densité de population en France</h3>
-          <p class="project-desc">
-            Visualisation 3D de la densité de population française par commune.
-            Pipeline QGIS → Blender pour une lecture immédiate de la macrocéphalie
-            parisienne et des déserts démographiques.
-          </p>
-          <div class="project-tools">
-            <span class="tool-tag">QGIS</span>
-            <span class="tool-tag">Blender</span>
-            <span class="tool-tag">INSEE</span>
-          </div>
-        </div>
-      </article>
+  </main>
 
-      <!-- Projet 3 -->
-      <article class="project-card">
-        <div class="project-img-placeholder">
-          <!-- Remplace par : <img src="images/banc.png" alt="Mobilier urbain" class="project-img"> -->
-          Mobilier urbain 3D
-        </div>
-        <div class="project-body">
-          <p class="project-tag">Modélisation · Blender</p>
-          <h3 class="project-title">Bibliothèque de mobilier urbain</h3>
-          <p class="project-desc">
-            Modélisation 3D d'assets de mobilier urbain réalistes — banc de parc,
-            lampadaire, corbeille. Destinés à peupler une scène urbaine complète
-            pour visualiser un projet de réaménagement.
-          </p>
-          <div class="project-tools">
-            <span class="tool-tag">Blender</span>
-            <span class="tool-tag">PBR textures</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Projet 4 — En cours -->
-      <article class="project-card">
-        <div class="project-img-placeholder" style="background: linear-gradient(135deg, #2d4a39 0%, #3B5E4A 100%);">
-          En cours
-        </div>
-        <div class="project-body">
-          <p class="project-tag">En cours · Analyse urbaine</p>
-          <h3 class="project-title">Accès aux terrains de foot à Paris</h3>
-          <p class="project-desc">
-            Diagnostic cartographique de l'accès aux équipements sportifs
-            parisiens — inégalités spatiales, ratio habitants/terrain,
-            comparaison avec d'autres métropoles européennes.
-          </p>
-          <div class="project-tools">
-            <span class="tool-tag">QGIS</span>
-            <span class="tool-tag">data.gouv.fr</span>
-            <span class="tool-tag">InDesign</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Projet 5 — En cours -->
-      <article class="project-card">
-        <div class="project-img-placeholder" style="background: linear-gradient(135deg, #2d4a39 0%, #3B5E4A 100%);">
-          En cours
-        </div>
-        <div class="project-body">
-          <p class="project-tag">En cours · Scène urbaine</p>
-          <h3 class="project-title">Place de la Libération — Réaménagement 3D</h3>
-          <p class="project-desc">
-            Modélisation complète d'une place de centre-ville — diagnostic
-            terrain, analyse des usages, proposition de réaménagement
-            et visualisation 3D intégrale avec mobilier modélisé.
-          </p>
-          <div class="project-tools">
-            <span class="tool-tag">Blender</span>
-            <span class="tool-tag">QGIS</span>
-            <span class="tool-tag">InDesign</span>
-          </div>
-        </div>
-      </article>
-
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Eleazar Floirat — Urbaniste de projet</p>
+      <a href="#mentions" class="footer-link">Mentions légales</a>
     </div>
-  </section>
-
-  <!-- COMPÉTENCES -->
-  <section class="skills" id="competences">
-    <p class="section-eyebrow" style="color: var(--accent2);">Outils & savoir-faire</p>
-    <h2 class="section-title">Compétences</h2>
-    <p class="section-sub">
-      Un profil hybride combinant analyse territoriale, cartographie et visualisation 3D.
-    </p>
-
-    <div class="skills-grid">
-      <div class="skill-item">
-        <div class="skill-name">QGIS</div>
-        <div class="skill-level"><div class="skill-fill" style="width:45%"></div></div>
-        <div class="skill-label">Débutant — en progression</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">Blender</div>
-        <div class="skill-level"><div class="skill-fill" style="width:50%"></div></div>
-        <div class="skill-label">Débutant — modélisation & rendu</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">Adobe InDesign</div>
-        <div class="skill-level"><div class="skill-fill" style="width:20%"></div></div>
-        <div class="skill-label">En cours d'apprentissage</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">Adobe Illustrator</div>
-        <div class="skill-level"><div class="skill-fill" style="width:20%"></div></div>
-        <div class="skill-label">En cours d'apprentissage</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">Diagnostic territorial</div>
-        <div class="skill-level"><div class="skill-fill" style="width:40%"></div></div>
-        <div class="skill-label">Formation licence géo</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">Analyse urbaine</div>
-        <div class="skill-level"><div class="skill-fill" style="width:50%"></div></div>
-        <div class="skill-label">Pratique personnelle terrain</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">OpenStreetMap / data.gouv</div>
-        <div class="skill-level"><div class="skill-fill" style="width:55%"></div></div>
-        <div class="skill-label">Données ouvertes</div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name">Anglais</div>
-        <div class="skill-level"><div class="skill-fill" style="width:65%"></div></div>
-        <div class="skill-label">Niveau B2</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- À PROPOS -->
-  <section id="apropos">
-    <div class="about">
-      <div class="about-text">
-        <p class="section-eyebrow">Qui suis-je</p>
-        <h2 class="section-title">Urbaniste de projet en formation</h2>
-        <p class="about-body">
-          Étudiant en licence Géographie et Aménagement à l'Université Paris 1
-          Panthéon-Sorbonne (campus Clignancourt), je me forme au métier d'urbaniste
-          de projet — un profil qui combine diagnostic territorial, participation
-          habitante et conception spatiale.
-        </p>
-        <p class="about-body">
-          En parallèle de ma formation, j'explore la cartographie analytique avec
-          QGIS et la visualisation 3D d'espaces urbains avec Blender, pour construire
-          un profil hybride rare dans le secteur.
-        </p>
-        <div class="about-infos">
-          <div class="about-info-row">
-            <span class="about-info-label">Formation</span>
-            <span class="about-info-val">L2 Géographie & Aménagement — Paris 1</span>
-          </div>
-          <div class="about-info-row">
-            <span class="about-info-label">Localisation</span>
-            <span class="about-info-val">Paris, France</span>
-          </div>
-          <div class="about-info-row">
-            <span class="about-info-label">Objectif</span>
-            <span class="about-info-val">Master Urbanisme et Projet Urbain — 2026</span>
-          </div>
-          <div class="about-info-row">
-            <span class="about-info-label">Intérêts</span>
-            <span class="about-info-val">Espaces publics, renaturation, mobilités</span>
-          </div>
-        </div>
-      </div>
-      <div class="about-visual">
-        <div class="about-visual-inner"></div>
-        <p class="about-visual-text">
-          "Analyser un territoire,<br>
-          écouter ses habitants,<br>
-          imaginer son devenir."
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <p class="section-eyebrow" style="color: rgba(255,255,255,0.5);">Me contacter</p>
-    <h2 class="section-title">Travaillons ensemble</h2>
-    <p class="contact-sub">
-      Disponible pour des stages, échanges professionnels
-      ou collaborations sur des projets urbains.
-    </p>
-    <a href="mailto:ton@email.fr" class="contact-email">ton@email.fr</a>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>Prénom Nom · Urbaniste de projet en formation · Paris 1 Sorbonne</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
